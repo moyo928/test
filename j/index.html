@@ -1,0 +1,48 @@
+<!--
+    以下のサイトを参考に、GPSの取得をテスト
+    https://freefielder.jp/blog/2011/11/getcurrentposition-watchpositi.html
+-->
+
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>GPSテスト</title>
+    </head>
+
+    <body>
+        <button id="btn">位置情報を取得</button>
+
+        <script>
+            //変数を宣言.
+            let watchID;
+            let lat;
+            let lng;
+            let geoOptions = {
+                maximumAge : 0 ,
+                timeout : 2000 ,
+                enableHighAccuracy : true
+                };
+
+            //位置情報を取得.
+            watchID = navigator.geolocation.watchPosition( onSuccess , onErr , geoOptions );
+            //成功した場合.
+            function onSuccess( pos ){
+                lat = pos.coords.latitude ;
+                lng = pos.coords.longitude ;
+            }
+
+            function onErr( err ){
+                // エラー処理
+                console.log(err);
+            }
+
+            //ボタンを押して表示.
+            const btn = document.getElementById("btn");
+            btn.addEventListener("click", function() {
+                navigator.geolocation.clearWatch( watchID );
+                alert( lat + ',' + lng );
+            });
+        </script>
+    </body>
+</html>
