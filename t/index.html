@@ -13,7 +13,8 @@
         <h5>beta：<br><span id="beta"></span></h5>
         <h5>gamma：<br><span id="gamma"></span></h5>
         <h5>絶対方位：<br><span id="direction"></span></h5>
-        <h5>計算に使う角度：<br><span id="dvdeg"></span></h5>
+        <h5>計算に使う角度(g)：<br><span id="dvdeg"></span></h5>
+        <h5>計算に使う角度(b)：<br><span id="dvdegb"></span></h5>
         <h5>absolute：<br><span id="absolute"></span></h5>
         <h5>OS：<br><span id="os"></span></h5>
         <h5>Browser：<br><span id="browser"></span></h5>
@@ -21,12 +22,16 @@
         <h5>エラー：<br><span id="err"></span></h5>
 
         <script>
+            //https://mam-mam.net/javascript/deviceorientation.html
+            //https://qiita.com/arakaki_tokyo/items/e8c2fa26bb97ec4711d7
+
             let os;
             let browser;
             let nw = 0;
             let nw_alpha = '';
             let user_alpha;
             let dvdeg;
+            let dvdegb;
             let degrees;
 
             // 初期化
@@ -116,23 +121,13 @@
 
 
                 //計算しやすいように、スマホの角度を補正.
-                /*
-                if ((sLv == 3) || (sLv == 4)) {
-                    dvdeg = (Math.abs(beta) - 90);
-                } else if (sLv == 1) {
-                    if (gamma < 0) {
-                        dvdeg = -1 * (gamma + 90);
-                    } else if (gamma >= 0) {
-                        dvdeg = -1 * (gamma - 90);
-                    }
-                } else if (sLv == 2) {
-                    if (gamma < 0) {
-                        dvdeg = (gamma + 90);
-                    } else if (gamma >= 0) {
-                        dvdeg = (gamma - 90);
-                    }
+                if (gamma < 0) {
+                    dvdeg = -1 * (gamma + 90);
+                } else if (gamma >= 0) {
+                    dvdeg = -1 * (gamma - 90);
                 }
-                */
+
+                dvdegb = (Math.abs(beta) - 90);
 
                 if((os == "iPhone") || (os == "iPad")) {
                     // webkitCompasssHeading値を採用
@@ -148,8 +143,8 @@
                 document.querySelector("#alpha").innerHTML = alpha;
                 document.querySelector("#beta").innerHTML = beta;
                 document.querySelector("#gamma").innerHTML = gamma;
-                //document.querySelector("#dvdeg").innerHTML = dvdeg;
-
+                document.querySelector("#dvdeg").innerHTML = dvdeg;
+                document.querySelector("#dvdegb").innerHTML = dvdegb;
             }
 
             // 端末の傾き補正（Android用）
