@@ -20,6 +20,8 @@
         <script>
             let os;
             let browser;
+            let nw = 0;
+            let nw_alpha = '';
             let degrees;
 
             // 初期化
@@ -66,7 +68,14 @@
                 }
 
                 //スマホの回転を補正.
-                alpha = alpha - alpha;
+                if (nw == 0) {
+                    nw = 1;
+                    nw_alpha = alpha;
+                };
+
+                if (nw == 1) {
+                    alpha = alpha - nw_alpha;
+                };
 
                 //計算しやすいように、スマホの角度を補正.
                 /*
