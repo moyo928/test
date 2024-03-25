@@ -7,11 +7,13 @@
 
     <body>
         <h2>コンソール</h2>
-        <h5>nw_alpha：<br><span id="nw_alpha"></span></h5>
+        <h5>初期alpha：<br><span id="nw_alpha"></span></h5>
+        <h5>user_alpha：<br><span id="user_alpha"></span></h5>
         <h5>alpha：<br><span id="alpha"></span></h5>
         <h5>beta：<br><span id="beta"></span></h5>
         <h5>gamma：<br><span id="gamma"></span></h5>
         <h5>絶対方位：<br><span id="direction"></span></h5>
+        <h5>計算に使う角度：<br><span id="dvdeg"></span></h5>
         <h5>absolute：<br><span id="absolute"></span></h5>
         <h5>OS：<br><span id="os"></span></h5>
         <h5>Browser：<br><span id="browser"></span></h5>
@@ -23,6 +25,8 @@
             let browser;
             let nw = 0;
             let nw_alpha = '';
+            let user_alpha;
+            let dvdeg;
             let degrees;
 
             // 初期化
@@ -77,12 +81,35 @@
                 const nw_alphaw = document.getElementById("nw_alpha");
                 nw_alphaw.innerHTML = nw_alpha;
 
+
                 if (nw == 1) {
-                    alpha = alpha - nw_alpha;
-                    if (0 > alpha) {
-                        alpha = 360 + alpha;
+                    user_alpha = alpha - nw_alpha;
+                };
+
+                const user_alphaw = document.getElementById("user_alpha");
+                user_alphaw.innerHTML = user_alpha;
+
+
+                /*
+                if (nw == 0) {
+                    nw = 1;
+                    nw_alpha = alpha;
+                };
+
+                const nw_alphaw = document.getElementById("nw_alpha");
+                nw_alphaw.innerHTML = nw_alpha;
+
+                if (nw == 1) {
+                    user_alpha = alpha - nw_alpha;
+                    if (0 > user_alpha) {
+                        user_alpha = 360 + user_alpha;
                     };
                 };
+
+                const user_alphaw = document.getElementById("user_alpha");
+                user_alphaw.innerHTML = user_alpha;
+                */
+
 
                 //計算しやすいように、スマホの角度を補正.
                 /*
