@@ -7,6 +7,7 @@
 
     <body>
         <h2>コンソール</h2>
+        <h5>nw_alpha：<br><span id="nw_alpha"></span></h5>
         <h5>alpha：<br><span id="alpha"></span></h5>
         <h5>beta：<br><span id="beta"></span></h5>
         <h5>gamma：<br><span id="gamma"></span></h5>
@@ -71,10 +72,16 @@
                 if (nw == 0) {
                     nw = 1;
                     nw_alpha = alpha;
+
+                    const nw_alphaw = docment.getElementById("nw_alpha");
+                    nw_alphaw.innerHTML = nw_alpha;
                 };
 
                 if (nw == 1) {
                     alpha = alpha - nw_alpha;
+                    if (0 > alpha) {
+                        alpha = 360 + alpha;
+                    };
                 };
 
                 //計算しやすいように、スマホの角度を補正.
