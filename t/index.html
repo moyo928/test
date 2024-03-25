@@ -72,10 +72,10 @@
                 if (nw == 0) {
                     nw = 1;
                     nw_alpha = alpha;
-
-                    const nw_alphaw = docment.getElementById("nw_alpha");
-                    nw_alphaw.innerHTML = nw_alpha;
                 };
+
+                const nw_alphaw = document.getElementById("nw_alpha");
+                nw_alphaw.innerHTML = nw_alpha;
 
                 if (nw == 1) {
                     alpha = alpha - nw_alpha;
