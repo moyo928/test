@@ -41,9 +41,7 @@
             let dvdeg;
             let dvdegb;
             let degrees;
-
-            let ori = window.orientation;
-            document.querySelector("#ori").innerHTML = ori;
+            let ori;
 
             // 初期化
             function init() {
@@ -109,6 +107,8 @@
 
                 const user_alphaw = document.getElementById("user_alpha");
                 user_alphaw.innerHTML = user_alpha;
+                
+                ori = window.orientation;
 
 
                 let ro = -(ori) * Math.PI / 180;
@@ -175,6 +175,7 @@
                 document.querySelector("#gamma").innerHTML = gamma;
                 document.querySelector("#dvdeg").innerHTML = dvdeg;
                 document.querySelector("#dvdegb").innerHTML = dvdegb;
+                document.querySelector("#ori").innerHTML = ori;
                 document.querySelector("#ax").innerHTML = ax;
                 document.querySelector("#ay").innerHTML = ay;
                 document.querySelector("#az").innerHTML = az;
