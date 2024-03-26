@@ -16,6 +16,10 @@
         <h5>計算に使う角度(g)：<br><span id="dvdeg"></span></h5>
         <h5>計算に使う角度(b)：<br><span id="dvdegb"></span></h5>
         <h5>absolute：<br><span id="absolute"></span></h5>
+        <h5>画面向き：<br><span id="ori"></span></h5>
+        <h5>鉛直(横)：<br><span id="ax"></span></h5>
+        <h5>鉛直(縦)：<br><span id="ay"></span></h5>
+        <h5>鉛直(平)：<br><span id="az"></span></h5>
         <h5>OS：<br><span id="os"></span></h5>
         <h5>Browser：<br><span id="browser"></span></h5>
         <h5>UA：<br><span id="UA"></span></h5>
@@ -24,15 +28,22 @@
         <script>
             //https://mam-mam.net/javascript/deviceorientation.html
             //https://qiita.com/arakaki_tokyo/items/e8c2fa26bb97ec4711d7
+            //https://hakuhin.jp/js/device_orientation_event.html#DEVICE_ORIENTATION_EVENT_01
 
             let os;
             let browser;
             let nw = 0;
             let nw_alpha = '';
             let user_alpha;
+            let ax;
+            let ay;
+            let az;
             let dvdeg;
             let dvdegb;
             let degrees;
+
+            let ori = window.orientation;
+            document.querySelector("#ori").innerHTML = ori;
 
             // 初期化
             function init() {
@@ -99,6 +110,25 @@
                 const user_alphaw = document.getElementById("user_alpha");
                 user_alphaw.innerHTML = user_alpha;
 
+
+                let ro = -(ori) * Math.PI / 180;
+                let ry = gamma * Math.PI / 180;
+                let rx = beta * Math.PI / 180;
+                let rz = alpha * Math.PI / 180;
+                let co = Math.cos(ro);
+                let so = Math.sin(ro);
+                let cy = Math.cos(ry);
+                let sy = Math.sin(ry);
+                let cx = Math.cos(rx);
+                let sx = Math.sin(rx);
+                let cz = Math.cos(rz);
+                let sz = Math.sin(rz);
+
+                ax = -co * sy * cx + so * sx;
+                ay = so * sy * cx +co * sx;
+                az = cy * cx;
+                
+
                 /*
                 if (nw == 0) {
                     nw = 1;
@@ -145,6 +175,9 @@
                 document.querySelector("#gamma").innerHTML = gamma;
                 document.querySelector("#dvdeg").innerHTML = dvdeg;
                 document.querySelector("#dvdegb").innerHTML = dvdegb;
+                document.querySelector("#ax").innerHTML = ax;
+                document.querySelector("#ay").innerHTML = ay;
+                document.querySelector("#az").innerHTML = az;
             }
 
             // 端末の傾き補正（Android用）
