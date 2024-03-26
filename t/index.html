@@ -16,7 +16,6 @@
         <h5>計算に使う角度(g)：<br><span id="dvdeg"></span></h5>
         <h5>計算に使う角度(b)：<br><span id="dvdegb"></span></h5>
         <h5>absolute：<br><span id="absolute"></span></h5>
-        <h5>画面向き：<br><span id="orien"></span></h5>
         <h5>鉛直(横)：<br><span id="ax"></span></h5>
         <h5>鉛直(縦)：<br><span id="ay"></span></h5>
         <h5>鉛直(平)：<br><span id="az"></span></h5>
@@ -41,7 +40,6 @@
             let dvdeg;
             let dvdegb;
             let degrees;
-            let orien;
 
             // 初期化
             function init() {
@@ -107,12 +105,8 @@
 
                 const user_alphaw = document.getElementById("user_alpha");
                 user_alphaw.innerHTML = user_alpha;
-                
-                orien = window.orientation;
-                const orienw = document.getElementById("orien");
-                orienw.innerHTML = orien;
 
-                let ro = -(ori) * Math.PI / 180;
+                let ro = 0 * Math.PI / 180;
                 let ry = gamma * Math.PI / 180;
                 let rx = beta * Math.PI / 180;
                 let rz = alpha * Math.PI / 180;
