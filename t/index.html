@@ -121,9 +121,9 @@
                 az = cy * cx;
 
                 if (ax >= 0) {
-                    user_alpha = ((1.03 - ay) * 90) * (1.03 - az);
+                    user_alpha = ((1.03 - ay) * 90) * ((1.03 - Math.abs(az)));
                 } else if (ax < 0) {
-                    user_alpha = ((3.07 + ay) * 90) * (1.03 - az);
+                    user_alpha = ((3.07 + ay) * 90) * ((1.03 - Math.abs(az)));
                 };
 
                 //ay:1=>alpha:0.
