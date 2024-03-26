@@ -121,10 +121,10 @@
                 az = cy * cx;
 
                 if (ax >= 0) {
-                    user_alpha = 1 - ay;
+                    user_alpha = 9.8 - ay;
                 } else if (ax < 0) {
-                    user_alpha = 3 + ay;
-                }
+                    user_alpha = 29.4 + ay;
+                };
 
                 //ay:1=>alpha:0.
                 const user_alphaw = document.getElementById("user_alpha");
