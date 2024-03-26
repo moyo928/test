@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
     <head>
@@ -98,14 +99,10 @@
                 //スマホが水平の場合.
                 //b:0,g:0.
                 //betaが0になるほど、alphaも0にする.
-                user_alpha = alpha - (180 - beta);
                 
                 //スマホが垂直の場合.
                 //b:90,g:0.
                 //b:0,g:90.
-
-                const user_alphaw = document.getElementById("user_alpha");
-                user_alphaw.innerHTML = user_alpha;
 
                 let ro = 0 * Math.PI / 180;
                 let ry = gamma * Math.PI / 180;
@@ -123,7 +120,12 @@
                 ax = -co * sy * cx + so * sx;
                 ay = so * sy * cx +co * sx;
                 az = cy * cx;
+
+                user_alpha = alpha * Math.abs(ax);
                 
+                //ay:1=>alpha:0.
+                const user_alphaw = document.getElementById("user_alpha");
+                user_alphaw.innerHTML = user_alpha;
 
                 /*
                 if (nw == 0) {
