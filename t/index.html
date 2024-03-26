@@ -109,7 +109,8 @@
                 user_alphaw.innerHTML = user_alpha;
                 
                 ori = window.orientation;
-
+                const oriw = document.getElementById("ori");
+                oriw.innerHTML = ori;
 
                 let ro = -(ori) * Math.PI / 180;
                 let ry = gamma * Math.PI / 180;
@@ -175,7 +176,6 @@
                 document.querySelector("#gamma").innerHTML = gamma;
                 document.querySelector("#dvdeg").innerHTML = dvdeg;
                 document.querySelector("#dvdegb").innerHTML = dvdegb;
-                document.querySelector("#ori").innerHTML = ori;
                 document.querySelector("#ax").innerHTML = ax;
                 document.querySelector("#ay").innerHTML = ay;
                 document.querySelector("#az").innerHTML = az;
